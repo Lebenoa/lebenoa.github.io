@@ -4,31 +4,38 @@
         <meta charset="utf-8" />
         <link rel="icon" href="./favicon.webp" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Lebenoa's index — introduction, programming experience, third-party experience and works."
+        />
+        <meta name="color-scheme" content="dark" />
         <title>Lebenoa's Index</title>
-        
-		<link rel="modulepreload" href="./_app/immutable/entry/start.DaqG0sjK.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/D2dVaNQs.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/tEZZukQM.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/DuI1w_oY.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.CTcBOr80.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BlU3HF1n.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/ls_0JOi6.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/nfjtpgh1.js">
+        <link href="./_app/immutable/entry/start.DPbaynt3.js" rel="modulepreload">
+		<link href="./_app/immutable/entry/payload.DSmR2FwN.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/CRzLMJPS.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/DaI8xbGW.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/B3ERuGno.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/B62d1KRr.js" rel="modulepreload">
+		<link href="./_app/immutable/entry/app.OfF5Wfk0.js" rel="modulepreload">
+		<link href="./_app/immutable/nodes/0.JA3nAr-R.js" rel="modulepreload">
+		<link href="./_app/immutable/nodes/2.CUCQxr4D.js" rel="modulepreload">
+		
+		<link href="./_app/immutable/assets/0.NVzyOfGp.css" rel="stylesheet">
     </head>
     <body data-sveltekit-preload-data="hover">
         <div style="display: contents">
 			<script>
 				{
-					__sveltekit_3oun3m = {
-						base: new URL(".", location).pathname.slice(0, -1)
+					__sveltekit_sn68ou = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						version: "1793719843214"
 					};
 
 					const element = document.currentScript.parentElement;
 
-					Promise.all([
-						import("./_app/immutable/entry/start.DaqG0sjK.js"),
-						import("./_app/immutable/entry/app.CTcBOr80.js")
-					]).then(([kit, app]) => {
+					import("./_app/immutable/entry/start.DPbaynt3.js").then(async (kit) => {
+						kit.init(__sveltekit_sn68ou);
+						const app = await import("./_app/immutable/entry/app.OfF5Wfk0.js");
 						kit.start(app, element);
 					});
 				}
@@ -36,6 +43,7 @@
 		</div>
 
         <script>
+            const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const title = document.querySelector("title");
             const text = title.innerText;
             let currentTitle = text;
@@ -79,7 +87,9 @@
                 }, randomDelay);
             }
 
-            operate();
+            if (!reducedMotion) {
+                operate();
+            }
         </script>
     </body>
 </html>
