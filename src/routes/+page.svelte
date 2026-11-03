@@ -366,7 +366,7 @@
                 measure of actual experience.
             </p>
             <table
-                class="table-auto border-separate border-spacing-x-4 border-spacing-y-2 xl:border-spacing-x-8 xl:border-spacing-y-4"
+                class="table-auto border-separate border-spacing-x-4 border-spacing-y-2 xl:border-spacing-x-8 xl:border-spacing-y-4 [&_td]:text-center [&_td_img]:mx-auto [&_th]:text-center [&_th]:font-normal"
             >
                 <caption class="sr-only">
                     Programming language experience, showing the time since the earliest repository
@@ -527,16 +527,3 @@
         </div>
     {/if}
 </main>
-
-<style>
-    td,
-    th {
-        text-align: center;
-    }
-    th {
-        font-weight: normal;
-    }
-    td img {
-        margin-inline: auto;
-    }
-</style>
