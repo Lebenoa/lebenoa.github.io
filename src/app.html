@@ -4,6 +4,11 @@
         <meta charset="utf-8" />
         <link rel="icon" href="%sveltekit.assets%/favicon.webp" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Lebenoa's index — introduction, programming experience, third-party experience and works."
+        />
+        <meta name="color-scheme" content="dark" />
         <title>Lebenoa's Index</title>
         %sveltekit.head%
     </head>
@@ -11,6 +16,7 @@
         <div style="display: contents">%sveltekit.body%</div>
 
         <script>
+            const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const title = document.querySelector("title");
             const text = title.innerText;
             let currentTitle = text;
@@ -54,7 +60,9 @@
                 }, randomDelay);
             }
 
-            operate();
+            if (!reducedMotion) {
+                operate();
+            }
         </script>
     </body>
 </html>

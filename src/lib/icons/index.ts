@@ -13,6 +13,7 @@ import Youtube from "./youtube.svg";
 import Github from "./github.svg";
 import Discord from "./discord.svg";
 import Steam from "./steam.svg";
+import Link from "./link.svg";
 
 export {
     Csharp,
@@ -28,5 +29,6 @@ export {
     Github,
     Discord,
     Steam,
-    Youtube
+    Youtube,
+    Link
 };

@@ -55,7 +55,8 @@
 
 <button
     {...rest}
-    class="group relative flex cursor-pointer items-center justify-center border-none bg-none p-0 {buttonStyle}"
+    type="button"
+    class="group relative flex cursor-pointer items-center justify-center border-none bg-none p-0 focus-visible:outline-none [&:focus-visible>svg>polygon]:stroke-white [&:focus-visible>svg>polygon]:stroke-[3px] {buttonStyle}"
     style="width: {width}px; height: {height}px; {clipPath};"
 >
     <svg
