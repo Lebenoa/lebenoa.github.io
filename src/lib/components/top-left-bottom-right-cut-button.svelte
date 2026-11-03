@@ -1,8 +1,8 @@
 <script lang="ts">
     let {
-        width = 150,
-        height = 50,
-        cutCorner = 15,
+        width: widthProp = 150,
+        height: heightProp = 50,
+        cutCorner: cutCornerProp = 15,
         buttonStyle = "",
         textStyle = "text-xl",
         textColor = "text-cyan-300",
@@ -40,17 +40,12 @@
         [key: string]: unknown;
     } = $props();
 
-    if (width < 50) {
-        width = 50;
-    }
-
-    if (height < 50) {
-        height = 50;
-    }
-
-    let clipPath = `clip-path: polygon(${cutCorner}px 0%, 100% 0%, 100% ${
-        height - cutCorner
-    }px, ${width - cutCorner}px 100%, 0% 100%, 0% ${cutCorner}px);`;
+    const width = $derived(Math.max(widthProp, 50));
+    const height = $derived(Math.max(heightProp, 50));
+    const cutCorner = $derived(cutCornerProp);
+    const clipPath = $derived(
+        `clip-path: polygon(${cutCorner}px 0%, 100% 0%, 100% ${height - cutCorner}px, ${width - cutCorner}px 100%, 0% 100%, 0% ${cutCorner}px);`
+    );
 </script>
 
 <button

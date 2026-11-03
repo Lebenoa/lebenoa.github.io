@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Contact } from "$lib/types/index";
+    import type { Contact } from "#lib/types/index";
     let { info }: { info: Contact } = $props();
 </script>
 

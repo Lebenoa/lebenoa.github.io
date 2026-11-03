@@ -2,10 +2,10 @@
     import { onMount } from "svelte";
     import { fly, slide, scale } from "svelte/transition";
 
-    import TopLeftBottomRightCutButton from "$lib/components/top-left-bottom-right-cut-button.svelte";
-    import Modal from "$lib/components/modal.svelte";
-    import { languageSince } from "$lib/data/language-since";
-    import { elapsedSince } from "$lib/utils/elapsed";
+    import TopLeftBottomRightCutButton from "#lib/components/top-left-bottom-right-cut-button.svelte";
+    import Modal from "#lib/components/modal.svelte";
+    import { languageSince } from "#lib/data/language-since";
+    import { elapsedSince } from "#lib/utils/elapsed";
     import {
         Csharp,
         Discord,
@@ -22,7 +22,7 @@
         Steam,
         Youtube,
         Zig
-    } from "$lib/icons";
+    } from "#lib/icons";
 
     const email = "admin@lebenoa.com";
 
