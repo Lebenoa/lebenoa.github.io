@@ -7,6 +7,7 @@
     import { languageSince } from "#lib/data/language-since";
     import { elapsedSince } from "#lib/utils/elapsed";
     import {
+        CrFavicon,
         Csharp,
         Discord,
         Facebook,
@@ -15,7 +16,6 @@
         Java,
         JavaScript,
         Kotlin,
-        Link,
         Php,
         Python,
         Rust,
@@ -96,8 +96,7 @@
     <TopLeftBottomRightCutButton
         active={activeTab == 0}
         aria-pressed={activeTab == 0}
-        cutCorner={50}
-        width={300}
+        size="lg"
         onclick={() => {
             activeTab = 0;
             mobileNavModal = false;
@@ -108,8 +107,7 @@
     <TopLeftBottomRightCutButton
         active={activeTab == 1}
         aria-pressed={activeTab == 1}
-        cutCorner={50}
-        width={300}
+        size="lg"
         onclick={() => {
             activeTab = 1;
             mobileNavModal = false;
@@ -120,8 +118,7 @@
     <TopLeftBottomRightCutButton
         active={activeTab == 2}
         aria-pressed={activeTab == 2}
-        cutCorner={50}
-        width={300}
+        size="lg"
         onclick={() => {
             activeTab = 2;
             mobileNavModal = false;
@@ -132,8 +129,7 @@
     <TopLeftBottomRightCutButton
         active={activeTab == 3}
         aria-pressed={activeTab == 3}
-        cutCorner={50}
-        width={300}
+        size="lg"
         onclick={() => {
             activeTab = 3;
             mobileNavModal = false;
@@ -148,8 +144,7 @@
         <TopLeftBottomRightCutButton
             active={activeTab == 0}
             aria-pressed={activeTab == 0}
-            cutCorner={50}
-            width={280}
+            size="md"
             textStyle="text-lg"
             onclick={() => {
                 activeTab = 0;
@@ -160,8 +155,7 @@
         <TopLeftBottomRightCutButton
             active={activeTab == 1}
             aria-pressed={activeTab == 1}
-            cutCorner={50}
-            width={280}
+            size="md"
             textStyle="text-lg"
             buttonStyle={"ml-[-47px]"}
             onclick={() => {
@@ -173,8 +167,7 @@
         <TopLeftBottomRightCutButton
             active={activeTab == 2}
             aria-pressed={activeTab == 2}
-            cutCorner={50}
-            width={280}
+            size="md"
             textStyle="text-lg"
             buttonStyle={"ml-[-47px]"}
             onclick={() => {
@@ -186,8 +179,7 @@
         <TopLeftBottomRightCutButton
             active={activeTab == 3}
             aria-pressed={activeTab == 3}
-            cutCorner={50}
-            width={280}
+            size="md"
             textStyle="text-lg"
             buttonStyle={"ml-[-47px]"}
             onclick={() => {
@@ -200,8 +192,7 @@
     <div class="relative flex w-full justify-center py-2 lg:hidden">
         <TopLeftBottomRightCutButton
             active={false}
-            cutCorner={50}
-            width={300}
+            size="lg"
             aria-haspopup="dialog"
             aria-expanded={mobileNavModal}
             onclick={() => {
@@ -366,6 +357,14 @@
             out:slide={{ duration }}
         >
             <h2 class="sr-only">Programming Experience</h2>
+            <p
+                class="mt-4 mb-2 max-w-lg text-center text-lg text-gray-400"
+                in:fly={{ x: -100, duration, delay: duration }}
+                out:fly={{ x: 100, duration }}
+            >
+                Time since the first repo on GitHub for each language. This is not an accurate
+                measure of actual experience.
+            </p>
             <table
                 class="table-auto border-separate border-spacing-x-4 border-spacing-y-2 xl:border-spacing-x-8 xl:border-spacing-y-4"
             >
@@ -510,8 +509,7 @@
                 in:fly={{ x: -100, duration, delay: duration }}
                 out:fly={{ x: -100, duration }}
             >
-                A collection of the things I have built and worked on lives over at
-                <code class="bg-indigo-600 p-1 font-bold text-white">cr.lebenoa.com</code>
+                A collection of the things I have built and worked on.
             </p>
             <a
                 class="mt-8 flex h-fit w-fit flex-col items-center border border-transparent px-8 py-6 transition-colors duration-200 active:border-cyan-500 active:bg-cyan-500/25 lg:hover:border-cyan-500 lg:hover:bg-cyan-500/25"
@@ -521,7 +519,7 @@
                 in:scale={{ duration, delay: duration + 500 }}
                 out:scale={{ duration }}
             >
-                <img class="mb-2 h-24 w-auto" src={Link} alt="" aria-hidden="true" />
+                <img class="mb-2 h-24 w-auto" src={CrFavicon} alt="" aria-hidden="true" />
                 <p class="text-lg">
                     cr.lebenoa.com<span class="sr-only"> (opens in a new tab)</span>
                 </p>

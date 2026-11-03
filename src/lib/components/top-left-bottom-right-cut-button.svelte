@@ -1,33 +1,12 @@
 <script lang="ts">
-    let {
-        width: widthProp = 150,
-        height: heightProp = 50,
-        cutCorner: cutCornerProp = 15,
-        buttonStyle = "",
-        textStyle = "text-xl",
-        textColor = "text-cyan-300",
-        strokeColor = "stroke-cyan-300",
-
-        // start with `group-hover:`
-        hoverStyle = "group-hover:fill-cyan-300/20 group-hover:stroke-cyan-300",
-        hoverTextStyle = "",
-
-        active = false,
-        activeStyle = "fill-cyan-300 stroke-cyan-300",
-        activeTextStyle = "text-black",
-
-        children,
-
-        ...rest
-    }: {
-        width?: number;
-        height?: number;
-        cutCorner?: number;
+    type Props = {
+        size?: "md" | "lg";
         buttonStyle?: string;
         textStyle?: string;
         textColor?: string;
         strokeColor?: string;
 
+        // start with `group-hover:`
         hoverStyle?: string;
         hoverTextStyle?: string;
 
@@ -38,34 +17,57 @@
         children: any;
 
         [key: string]: unknown;
-    } = $props();
+    };
 
-    const width = $derived(Math.max(widthProp, 50));
-    const height = $derived(Math.max(heightProp, 50));
-    const cutCorner = $derived(cutCornerProp);
-    const clipPath = $derived(
-        `clip-path: polygon(${cutCorner}px 0%, 100% 0%, 100% ${height - cutCorner}px, ${width - cutCorner}px 100%, 0% 100%, 0% ${cutCorner}px);`
+    let {
+        size = "md",
+        buttonStyle = "",
+        textStyle = "text-xl",
+        textColor = "text-cyan-300",
+        strokeColor = "stroke-cyan-300",
+
+        hoverStyle = "group-hover:fill-cyan-300/20 group-hover:stroke-cyan-300",
+        hoverTextStyle = "",
+
+        active = false,
+        activeStyle = "fill-cyan-300 stroke-cyan-300",
+        activeTextStyle = "text-black",
+
+        children,
+
+        ...rest
+    }: Props = $props();
+
+    const sizes = {
+        md: { width: 280, height: 50, cut: 50, classes: "h-[50px] w-[280px]" },
+        lg: { width: 300, height: 50, cut: 50, classes: "h-[50px] w-[300px]" }
+    } as const;
+
+    // chamfered top-left and bottom-right corners, relative to the element box
+    const clipClasses =
+        "[clip-path:polygon(50px_0,100%_0,100%_calc(100%_-_50px),calc(100%_-_50px)_100%,0_100%,0_50px)]";
+
+    const geometry = $derived(sizes[size]);
+
+    const points = $derived(
+        `${geometry.cut},0 ${geometry.width},0 ${geometry.width},${geometry.height - geometry.cut} ${geometry.width - geometry.cut},${geometry.height} 0,${geometry.height} 0,${geometry.cut}`
     );
 </script>
 
 <button
     {...rest}
     type="button"
-    class="group relative flex cursor-pointer items-center justify-center border-none bg-none p-0 focus-visible:outline-none [&:focus-visible>svg>polygon]:stroke-white [&:focus-visible>svg>polygon]:stroke-[3px] {buttonStyle}"
-    style="width: {width}px; height: {height}px; {clipPath};"
+    class="group relative flex cursor-pointer items-center justify-center border-none bg-none p-0 focus-visible:outline-none [&:focus-visible>svg>polygon]:stroke-white [&:focus-visible>svg>polygon]:stroke-[3px] {clipClasses} {geometry.classes} {buttonStyle}"
 >
     <svg
-        class="absolute top-0 left-0"
-        style="height: {height}px; width: {width}px; {clipPath};"
-        viewBox="0 0 {width} {height}"
+        class="absolute top-0 left-0 h-full w-full"
+        viewBox="0 0 {geometry.width} {geometry.height}"
     >
         <polygon
             class="z-0 stroke-2 transition-colors duration-300 ease-in-out {active
                 ? activeStyle
                 : 'fill-transparent ' + strokeColor + ' ' + hoverStyle}"
-            style="{clipPath};"
-            points="{cutCorner},0 {width},0 {width},{height - cutCorner} {width -
-                cutCorner},{height} 0,{height} 0,{cutCorner}"
+            {points}
         />
     </svg>
     <p

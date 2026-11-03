@@ -13,6 +13,7 @@ import Youtube from "./youtube.svg";
 import Github from "./github.svg";
 import Discord from "./discord.svg";
 import Steam from "./steam.svg";
+import CrFavicon from "./cr-favicon.avif";
 import Link from "./link.svg";
 
 export {
@@ -30,5 +31,6 @@ export {
     Discord,
     Steam,
     Youtube,
-    Link
+    Link,
+    CrFavicon
 };
